@@ -33,3 +33,9 @@ repos:
     hooks:
       - id: clang-format
         args: [--style=Google, -i]
+
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.8.13
+    hooks:
+      - id: uv-lock
+      - id: uv-export

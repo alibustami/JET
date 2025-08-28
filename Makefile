@@ -1,10 +1,33 @@
 SHELL := /bin/bash
+PY := 3.10
 
-.ONE_SHELL:
+.PHONY: create-venv remove-venv precommit fmt lint test
+
 create-venv:
-	@echo "START: Creating jet-env virtual environment" && \
-	conda create -n jet-env python=3.10 -y && \
-	conda run -n jet-env python -m pip install --upgrade pip && \
-	conda run -n jet-env python -m pip install --upgrade setuptools wheel && \
-	conda run -n jet-env pip install -e . && \
-	conda run -n jet-env pre-commit install
+	@echo "START: Creating .venv with uv (Python $(PY))" && \
+	uv venv --python $(PY) && \
+	uv sync && \
+	uv run pre-commit install
+
+remove-venv:
+	@echo "START: removing .venv and lock" && \
+	rm -rf .venv uv.lock
+
+precommit:
+	uv run pre-commit run -a
+
+fmt:
+	uv run isort .
+	uv run black .
+
+lint:
+	uv run flake8 .
+
+test:
+	uv run pytest
+
+requirements_txt:
+	uv export
+
+lock:
+	uv lock

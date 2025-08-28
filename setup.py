@@ -15,7 +15,7 @@ setup(
     authors=["Ali Al-Bustami", "Humberto Ruiz-Ochoa"],
     author_email=["abustami@umich.edu", "hruiz@umich.edu"],
     python_requires=">=3.10",
-    install_requires=REQUIREMENTS,
+    # install_requires=REQUIREMENTS,
     include_package_data=True,
     entry_points={
         "console_scripts": [
