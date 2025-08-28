@@ -1,22 +1,43 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "jet"
 version = "0.1.0"
-description = "Add your description here"
+description = "Joint Evaluation of TensorRT Backends for YOLOv8."
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = [
-    "black>=25.1.0",
-    "flake8>=7.3.0",
-    "isort>=6.0.1",
-    "matplotlib>=3.10.5",
-    "pandas>=2.3.2",
-    "pre-commit>=4.3.0",
-    "typer>=0.16.1",
+authors = [
+  { name = "Ali Al-Bustami", email = "abustami@umich.edu" },
+  { name = "Humberto Ruiz-Ochoa", email = "hruiz@umich.edu" },
 ]
+
+dependencies = [
+  "matplotlib>=3.10.5",
+  "pandas>=2.3.2",
+  "typer>=0.16.1",
+]
+
+[project.scripts]
+jet = "jet.apps.cli:app"
+
+# dev-only dependencies
+[dependency-groups]
+dev = [
+  "black>=25.1.0",
+  "flake8>=7.3.0",
+  "isort>=6.0.1",
+  "pre-commit>=4.3.0",
+]
+
+# tell uv to install dev deps by default
+[tool.uv]
+default-groups = ["dev"]
 
 [tool.black]
 line-length = 79
-include = '\.pyi?$'
+include = "\\.pyi?$"
 exclude = '''
 /(
     \.git
@@ -35,5 +56,5 @@ exclude = '''
 '''
 
 [tool.isort]
-profile = 'black'
+profile = "black"
 multi_line_output = 3
