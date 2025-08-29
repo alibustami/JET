@@ -1,0 +1,6 @@
+experiment:
+  yolo_version: "v8"
+  model_size: s # n, s, m, l, x
+  model_task: detection # only detection is supported yet
+  experiment_name: # optional
+  dataset_path: data/set/path

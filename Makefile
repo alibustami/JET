@@ -5,13 +5,13 @@ PY := 3.10
 
 create-venv:
 	@echo "START: Creating .venv with uv (Python $(PY))" && \
-	uv venv --python $(PY) && \
+	uv venv jet-env --python $(PY) && \
 	uv sync && \
 	uv run pre-commit install
 
-remove-venv:
+remove:
 	@echo "START: removing .venv and lock" && \
-	rm -rf .venv uv.lock
+	rm -rf .venv uv.lock dist/
 
 precommit:
 	uv run pre-commit run -a
@@ -26,8 +26,10 @@ lint:
 test:
 	uv run pytest
 
-requirements_txt:
-	uv export
+rqts_txt:
+	uv export --no-hashes  > requirements.txt
 
 lock:
 	uv lock
+dev-install:
+	uv pip install -e .

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "jet"
-version = "0.1.0"
+version = "1.0.0"
 description = "Joint Evaluation of TensorRT Backends for YOLOv8."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -13,10 +13,15 @@ authors = [
   { name = "Humberto Ruiz-Ochoa", email = "hruiz@umich.edu" },
 ]
 
+
 dependencies = [
+  "logdir>=0.13.0",
   "matplotlib>=3.10.5",
+  "onnx>=1.19.0",
   "pandas>=2.3.2",
+  "pydantic>=2.11.7",
   "typer>=0.16.1",
+  "ultralytics>=8.3.189",
 ]
 
 [project.scripts]
@@ -30,6 +35,10 @@ dev = [
   "isort>=6.0.1",
   "pre-commit>=4.3.0",
 ]
+
+
+[tool.setuptools.packages.find]
+include = ["jet*"]
 
 # tell uv to install dev deps by default
 [tool.uv]
