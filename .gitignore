@@ -208,3 +208,7 @@ __marimo__/
 
 *.pt
 *.onnx
+*.engine
+*.trt
+data/*.json
+data/**/*.jpg
