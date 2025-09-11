@@ -212,3 +212,4 @@ __marimo__/
 *.trt
 data/*.json
 data/**/*.jpg
+*.whl
